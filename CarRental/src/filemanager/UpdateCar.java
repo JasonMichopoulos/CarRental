@@ -2,14 +2,14 @@ package filemanager;
 
 
 public class UpdateCar {
-    private static final String path = "CarRental/src/vehicles_with_plates.csv";
+    private static final String Path = Paths.getCarPath();
     private static final String[] header = new String[]{"id,πινακίδα,μάρκα,τύπος,μοντέλο,έτος,χρώμα,κατάσταση"}; // Η επικεφαλιδα του CSV αρχειου που θα χρειαστει
 
 
 
     // Για να ενημερωνει την διαθεσιμοτητα του αυτοκινητου
     public static void carAvailable(int id, boolean updatedAvailability){
-        Reader readCars = new Reader(path); //Ανοιγουμε το αρχειο για να το διαβασουμε
+        Reader readCars = new Reader(Path); //Ανοιγουμε το αρχειο για να το διαβασουμε
 
         String[][] all_cars = readCars.read();  //Καταχωρουμε τα αυτοκινητα
 
@@ -23,13 +23,13 @@ public class UpdateCar {
                     all_cars[i][7] = "Μη διαθέσιμο";
                 }
 
-                Writer.clearCSV(path);
+                Writer.clearCSV(Path);
                 break; //Σταματαμε την λουπα για να μην κανει περιττες επαναληψεις
             }
 
         }
 
-        Writer writeUpdateCar = new Writer(path);
+        Writer writeUpdateCar = new Writer(Path);
         //writeUpdateCar.write(header);// Γραφουμε την επικεφαλιδα
         for(int i = 0; i < all_cars.length; i++){
             writeUpdateCar.write(all_cars[i]);// Και ολα τα αυτοκινητα με την αλλαγη
@@ -37,7 +37,7 @@ public class UpdateCar {
     }
 
     public static boolean editCars(int id, String WhatToEdit, String updatedItem){
-        Reader readCars = new Reader(path);
+        Reader readCars = new Reader(Path);
         String[][] all_cars = readCars.read();
         boolean carFound = false;
         for (int i = 1; i < all_cars.length; i++) {
@@ -62,7 +62,7 @@ public class UpdateCar {
                         return false;
                 }
                 carFound = true;
-                Writer.clearCSV(path);
+                Writer.clearCSV(Path);
                 break;
             }
 
@@ -71,7 +71,7 @@ public class UpdateCar {
             return false;
         }
 
-        Writer writeUpdateCar = new Writer(path);
+        Writer writeUpdateCar = new Writer(Path);
 
         for(int i = 0; i < all_cars.length; i++){
             writeUpdateCar.write(all_cars[i]);

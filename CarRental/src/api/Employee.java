@@ -1,6 +1,7 @@
 package api;
 
 
+import filemanager.Paths;
 import filemanager.Reader;
 import filemanager.Writer;
 
@@ -14,8 +15,8 @@ public class Employee extends Person {
     //Attributes - Ιδιότητες
     private String username;
     private String password;
-    private static final String usersPath = "CarRental/src/users.csv";
-    private static final String rentsPath = "CarRental/src/rents.csv";
+    private static final String usersPath = Paths.getUsersPath();
+    private static final String rentsPath = Paths.getRentsPath();
     //Constructor - Κατασκευαστής
     public Employee(String fullname, String username, String password, String email){
         super(fullname, email); // Τα υιοθετεί απο την κλάση Person
@@ -61,8 +62,8 @@ public class Employee extends Person {
                     employee.getName(),
                     employee.getSurname(),
                     employee.getUsername(),
-                    employee.getPassword(),
-                    employee.getEmail()
+                    employee.getEmail(),
+                    employee.getPassword()
             };
             writer.write(CSVLine);
         }

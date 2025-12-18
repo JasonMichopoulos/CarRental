@@ -1,5 +1,6 @@
 package api;
 
+import filemanager.Paths;
 import filemanager.Reader;
 import filemanager.Writer;
 
@@ -16,8 +17,8 @@ public class Car {
     private String color; // xrwma
     private boolean available; // diathesimo - mh diathesimo
 
-    private static final String carsPath = "CarRental/src/vehicles_with_plates.csv";
-    private static final String rentsPath = "CarRental/src/rents.csv";
+    private static final String carsPath = Paths.getCarPath();
+    private static final String rentsPath = Paths.getRentsPath();
     private static final String[] header = new String[]{"id,πινακίδα,μάρκα,τύπος,μοντέλο,έτος,χρώμα,κατάσταση"};
 
 
@@ -130,7 +131,7 @@ public class Car {
 
             boolean match = true; // Αρχικοποιουμε οτι ταιριαζει το αυτοκινητο με τα κριτηρια
 
-            //Τα κανουμε ολα μικρα για να μπορουμε να τα συγκρινουμε πιο ευκολα
+            //Τα κανουμε ολα μικρα για να μπορουμε να τα συγκρινουμε
             String plate = car[1].toLowerCase();
             String brand = car[2].toLowerCase();
             String type  = car[3].toLowerCase();

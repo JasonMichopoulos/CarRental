@@ -4,6 +4,7 @@ import api.Car;
 import api.Customer;
 import api.Employee;
 import api.Rental;
+import filemanager.Paths;
 import filemanager.Reader;
 
 import javax.swing.*;
@@ -18,9 +19,9 @@ public class RentsPanel extends JPanel {
 
     private JList<String> carsList = new JList<>();
     private JList<String> customersList = new JList<>();
-    private final String carPath = "CarRental/src/vehicles_with_plates.csv";
-    private final String customersPath = "CarRental/src/customers.csv";
-    private final String rentPath = "CarRental/src/rents.csv";
+    private final String carPath = Paths.getCarPath();
+    private final String customersPath = Paths.getCustomersPath();
+    private final String rentPath = Paths.getRentsPath();
     private final String[] allAvalailableCars = new String[]{
             "",
             "",
@@ -595,22 +596,14 @@ public class RentsPanel extends JPanel {
                 return;
             }
             String[] selectedData = selected.trim().split("\\|");
-            Car car = new Car(
-                    Integer.parseInt(selectedData[0].trim()),
-                    selectedData[1],
-                    selectedData[2],
-                    selectedData[3],
-                    selectedData[4],
-                    selectedData[5],
-                    selectedData[6],
-                    selectedData[7].equalsIgnoreCase("Διαθέσιμο")
-            );
+            Car car = Car.getCarByPlate(selectedData[1].trim());
             boolean done = Car.carReturn(car);
-            if(done){
 
-                JOptionPane.showMessageDialog(dialog,"Το αυτοκίνητο επιστράφηκε");
+            if(done){
                 Rental.Returned(car);
                 UnavailableCarsList.setListData(DashBoard.updateList(Car.searchCars(Car.allCars(),allUnavailableCars)));
+                carsList.setListData(DashBoard.updateList(Car.searchCars(Car.allCars(),allAvalailableCars)));
+                JOptionPane.showMessageDialog(dialog,"Το αυτοκίνητο επιστράφηκε");
             }else{
                 JOptionPane.showMessageDialog(dialog,"Το αυτοκίνητο δεν μπόρεσε να επιστραφεί");
             }

@@ -1,5 +1,6 @@
 package api;
 
+import filemanager.Paths;
 import filemanager.Reader;
 import filemanager.UpdateCar;
 import filemanager.Writer;
@@ -22,7 +23,7 @@ public class Rental {
     private final Employee employee; // κλάση Employee
     private boolean returned;
 
-    public final static String Path = "CarRental/src/rents.csv";
+    public final static String Path = Paths.getRentsPath();
     public final static String[] Header = new String[]{"id,car,customer,startdate,enddate,employee,returned"};
 
     // Ολες οι ιδιοτητες ειναι τυπου final γιατι δεν θα χρειαστουν επεξεργασια μετα την δηλωση τους
@@ -69,6 +70,11 @@ public class Rental {
 
 
     public static boolean Returned(Car car){
+        /*
+        Μεθοδος που ενημερωνει στην rents.csv πως το αυτοκινητο επιστραφηκε
+        Επιστρεφει true αμα εγινε με επιτυχια
+        Η false αμα δεν τα καταφερε
+         */
         boolean carFound = false;
         String[][] allRents = new Reader(Path).read();
         for(int i = 0; i < allRents.length; i++){

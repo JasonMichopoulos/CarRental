@@ -2,6 +2,7 @@ package gui;
 
 import api.Customer;
 import api.Validations;
+import filemanager.Paths;
 import filemanager.Reader;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 public class CustomerPanel extends JPanel {
     JList<String> customersList = new JList<>();
+    private final String customersPath = Paths.getCustomersPath();
     public CustomerPanel(JFrame frame) {
         super();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -188,7 +190,7 @@ public class CustomerPanel extends JPanel {
                 JOptionPane.showMessageDialog(searchDialog,"Complete at least 1 of the blanks");
             }
             else{
-                String[][] all_customers = new Reader("CarRental/src/customers.csv").read();
+                String[][] all_customers = new Reader(customersPath).read();
                 String[][] searchedCustomers = Customer.searchCustomer(all_customers, criteria);
                 customersList.setListData(DashBoard.updateList(searchedCustomers));
                 searchDialog.dispose();
@@ -363,7 +365,7 @@ public class CustomerPanel extends JPanel {
                     String fullName = data[1] + " " + data[2];
                     Customer newCustomer = new Customer(data[0],fullName,data[3],data[4]);
                     Customer.addCustomer(newCustomer);
-                    customersList.setListData(DashBoard.updateList(new Reader("CarRental/src/customers.csv").read()));
+                    customersList.setListData(DashBoard.updateList(new Reader(customersPath).read()));
                     JOptionPane.showMessageDialog(addDialog,"Ο πελάτης καταχωρήθηκε με επιτυχία!");
                     addDialog.dispose();
                 }else if(!Validations.isValidEmail(emailField.getText()) &&  Validations.isValidPhone(phoneField.getText())){
@@ -391,8 +393,8 @@ public class CustomerPanel extends JPanel {
     }
 
     public void refreshList(){
-        String[][] customers =  new Reader("CarRental/src/customers.csv").read();
-        customersList.setListData(DashBoard.updateList(new Reader("CarRental/src/customers.csv").read()));
+        String[][] customers =  new Reader(customersPath).read();
+        customersList.setListData(DashBoard.updateList(new Reader(customersPath).read()));
     }
 
 }
