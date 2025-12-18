@@ -18,9 +18,9 @@ public class RentsPanel extends JPanel {
 
     private JList<String> carsList = new JList<>();
     private JList<String> customersList = new JList<>();
-    private final String carPath = "src/vehicles_with_plates.csv";
-    private final String customersPath = "src/customers.csv";
-    private final String rentPath = "src/rents.csv";
+    private final String carPath = "CarRental/src/vehicles_with_plates.csv";
+    private final String customersPath = "CarRental/src/customers.csv";
+    private final String rentPath = "CarRental/src/rents.csv";
     private final String[] allAvalailableCars = new String[]{
             "",
             "",

@@ -11,6 +11,9 @@ import java.util.Arrays;
 public class UserPanel extends JPanel {
     private Employee employee;
     private JList<String> userList = new JList<>();
+    private String emplRents;
+    private String totalRents;
+    private JLabel statsLabel;
     public UserPanel(JFrame frame){
         super();
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
@@ -27,10 +30,16 @@ public class UserPanel extends JPanel {
         employee = Employee.getEmployeeByUsername(frame.getTitle().split("\\|")[1].trim());
         JLabel curUserLabel = Labels("Current user:");
         curUserLabel.setFont(new Font("Arial",Font.BOLD,40));
+
+        emplRents = Integer.toString(Employee.totalRents(employee));
+        totalRents = Integer.toString(Rental.totalRents());
+        statsLabel = Labels(emplRents + " / " + totalRents);
+
         this.add(curUserLabel);
         this.add(Labels(employee.getFullname()));
         this.add(Labels(employee.getEmail()));
-        this.add(Labels("Ενοικιάσεις: " + Employee.totalRents(employee) + " / " + Rental.totalRents()));
+        this.add(Labels("Ενοικιάσεις: "));
+        this.add(statsLabel);
         this.add(Box.createVerticalGlue());
         this.add(addUserButton(frame));
         this.add(Box.createVerticalStrut(20));
@@ -270,6 +279,12 @@ public class UserPanel extends JPanel {
         passField.setMaximumSize(new Dimension(150,25));
         passField.setFont(new Font("Arial",Font.BOLD,20));
         return passField;
+    }
+
+    public void refreshStats(){
+        emplRents = Integer.toString(Employee.totalRents(employee));
+        totalRents = Integer.toString(Rental.totalRents());
+        statsLabel.setText(emplRents + " / " + totalRents);
     }
 
 

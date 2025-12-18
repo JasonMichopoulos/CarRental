@@ -40,6 +40,9 @@ public class DashBoard {
                     RentsPanel rentsPanel = (RentsPanel) tabbedPane.getComponentAt(selectedIndex);
                     rentsPanel.refreshLists();
                     break;
+                case "User":
+                    UserPanel userPanel = (UserPanel) tabbedPane.getComponentAt(selectedIndex);
+                    userPanel.refreshStats();
             }
         });
 

@@ -14,8 +14,8 @@ public class Employee extends Person {
     //Attributes - Ιδιότητες
     private String username;
     private String password;
-    private static final String usersPath = "src/users.csv";
-    private static final String rentsPath = "src/rents.csv";
+    private static final String usersPath = "CarRental/src/users.csv";
+    private static final String rentsPath = "CarRental/src/rents.csv";
     //Constructor - Κατασκευαστής
     public Employee(String fullname, String username, String password, String email){
         super(fullname, email); // Τα υιοθετεί απο την κλάση Person

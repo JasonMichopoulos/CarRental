@@ -16,8 +16,8 @@ public class Car {
     private String color; // xrwma
     private boolean available; // diathesimo - mh diathesimo
 
-    private static final String carsPath = "src/vehicles_with_plates.csv";
-    private static final String rentsPath = "src/rents.csv";
+    private static final String carsPath = "CarRental/src/vehicles_with_plates.csv";
+    private static final String rentsPath = "CarRental/src/rents.csv";
     private static final String[] header = new String[]{"id,πινακίδα,μάρκα,τύπος,μοντέλο,έτος,χρώμα,κατάσταση"};
 
 

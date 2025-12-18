@@ -13,8 +13,8 @@ public class Customer extends Person{
     private String AFM;
     private String phoneNumber;
     private static final String[] header = new String[]{"ΑΦΜ,ονοματεπωνυμο,τηλεφωνο,email"}; // Η επικεφαλιδα του customers.csv
-    private static final String Path = "src/customers.csv"; // Το path (μονοπατι) για την προσβαση στο αρχειο customers.csv
-    private static final String rentsPath = "src/rents.csv";
+    private static final String Path = "CarRental/src/customers.csv"; // Το path (μονοπατι) για την προσβαση στο αρχειο customers.csv
+    private static final String rentsPath = "CarRental/src/rents.csv";
     //Constructor - Κατασκευαστής
     public Customer(String AFM, String fullname, String phoneNumber, String email) {
         super(fullname,email); // Τα υιοθετεί απο την κλάση Person

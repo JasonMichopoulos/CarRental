@@ -2,7 +2,7 @@ package filemanager;
 
 
 public class UpdateCar {
-    private static final String path = "src/vehicles_with_plates.csv";
+    private static final String path = "CarRental/src/vehicles_with_plates.csv";
     private static final String[] header = new String[]{"id,πινακίδα,μάρκα,τύπος,μοντέλο,έτος,χρώμα,κατάσταση"}; // Η επικεφαλιδα του CSV αρχειου που θα χρειαστει
 
 

@@ -134,7 +134,7 @@ public class CarsPanel extends JPanel {
                         status,
                 };
 
-                String[][] filtered_cars = Car.searchCars(new Reader("src/vehicles_with_plates.csv").read(),criteria);
+                String[][] filtered_cars = Car.searchCars(new Reader("CarRental/src/vehicles_with_plates.csv").read(),criteria);
 
                 CarsList.setListData(DashBoard.updateList(filtered_cars));
 
@@ -155,7 +155,7 @@ public class CarsPanel extends JPanel {
         Show_ALL.setFont(new Font("Arial", Font.BOLD, 15));
         Show_ALL.setAlignmentX(Component.CENTER_ALIGNMENT);
         Show_ALL.addActionListener(e -> {
-            CarsList.setListData(DashBoard.updateList(new Reader("src/vehicles_with_plates.csv").read()));
+            CarsList.setListData(DashBoard.updateList(new Reader("CarRental/src/vehicles_with_plates.csv").read()));
         });
 
 
@@ -256,7 +256,7 @@ public class CarsPanel extends JPanel {
                             true
                     ))){
                         JOptionPane.showMessageDialog(addDialog,"Το αυτοκινητο καταχωρηθηκε επιτυχως με id: " + car_ID);
-                        CarsList.setListData(DashBoard.updateList(new Reader("src/vehicles_with_plates.csv").read()));
+                        CarsList.setListData(DashBoard.updateList(new Reader("CarRental/src/vehicles_with_plates.csv").read()));
                         addDialog.dispose();
                     }else{
                         JOptionPane.showMessageDialog(addDialog, "To αυτοκινητο υπαρχει ηδη στη λιστα");
@@ -376,7 +376,7 @@ public class CarsPanel extends JPanel {
     }
 
     public void refreshCarsList() {
-        String[][] allCars = new Reader("src/vehicles_with_plates.csv").read();
+        String[][] allCars = new Reader("CarRental/src/vehicles_with_plates.csv").read();
         CarsList.setListData(DashBoard.updateList(allCars));
     }
 

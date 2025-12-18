@@ -22,7 +22,7 @@ public class Rental {
     private final Employee employee; // κλάση Employee
     private boolean returned;
 
-    public final static String Path = "src/rents.csv";
+    public final static String Path = "CarRental/src/rents.csv";
     public final static String[] Header = new String[]{"id,car,customer,startdate,enddate,employee,returned"};
 
     // Ολες οι ιδιοτητες ειναι τυπου final γιατι δεν θα χρειαστουν επεξεργασια μετα την δηλωση τους
@@ -52,7 +52,7 @@ public class Rental {
             System.out.println("Car is not available");
             return; // τερματιζουμε σε περιπτωση που ειναι
         }
-        Writer writeRent = new Writer("src/rents.csv"); // Σε ενα καινουργιο csv αρχειο καταχωρουμε την ενοικοιαση
+        Writer writeRent = new Writer(Path); // Σε ενα καινουργιο csv αρχειο καταχωρουμε την ενοικοιαση
         writeRent.write(new String[]{
            getRentalID(),
                 getCar().getPlate(), // Χρησιμοποιουμε την πινακιδα γιατι ειναι μοναδικη για καθε αυτοκινητο
