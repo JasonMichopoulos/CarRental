@@ -26,7 +26,11 @@ CarRental/
 │   │   ├── Reader.java    # Βοηθητικό εργαλείο για ανάγνωση CSV
 │   │   ├── Writer.java    # Εργαλείο εγγραφής σε CSV
 │   │   ├── UpdateCar.java # Ενημέρωση κατάστασης οχημάτων
-├── resources/             # Βοηθητικά αρχεία όπως customers.csv, rents.csv
+│   ├── gui/
+│   │   ├── CarsPanel.java     
+│   │   ├── CustomerPanel.java    
+│   │   ├── DashBoard.java   
+│   │   ├── loginWindow.java 
 ```
 
 ---
@@ -59,5 +63,9 @@ CarRental/
 │   │   ├── Reader.java    # Utility for reading CSV files
 │   │   ├── Writer.java    # Utility for writing to CSV files
 │   │   ├── UpdateCar.java # Updates vehicle statuses
-├── resources/             # Auxiliary files like customers.csv, rents.csv
+│   ├── gui/
+│   │   ├── CarsPanel.java     
+│   │   ├── CustomerPanel.java    
+│   │   ├── DashBoard.java   
+│   │   ├── loginWindow.java 
 ```
